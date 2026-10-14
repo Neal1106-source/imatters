@@ -1,0 +1,7 @@
+import type { Metadata } from 'next';
+import Image from 'next/image';
+import { brand } from '@/content/site';
+import { Eyebrow } from '@/components/ui';
+import { Closing } from '@/components/sections';
+export const metadata: Metadata = { title: '關於職引力' };
+export default function About() { return <main id="main"><section className="page-hero about-hero"><Eyebrow>THIS IS IMATTERS</Eyebrow><h1>你原本就有價值。<br />讓它，被看見。</h1><p className="hero-english">You matter. <em>Always.</em></p></section><section className="section about-story"><div><Eyebrow>OUR REASON FOR BEING</Eyebrow><h2>從形象出發，<br />回到自己。</h2></div><div><p className="lead">iMatters 傳遞的是：<br />「我很重要，我的價值值得被看見。」</p><p>{brand.description}</p><p>不論是你的存在、想法、聲音或專業，都值得被重視。專業能力很重要，如何讓別人理解你的專業，同樣重要。</p><p>我們希望陪伴你認識自己的特質，整理適合自己的風格，讓外在呈現與內在實力一致。從外而內，一點一點累積自信。</p></div></section><section className="values-section"><Eyebrow>WHAT WE BELIEVE</Eyebrow><div><article><span>01</span><h2>專業</h2><p>從身形與色彩的理解出發，將形象整理連結到真實需要。</p></article><article><span>02</span><h2>親切</h2><p>尊重每個人的節奏，從你的問題與生活情境開始。</p></article><article><span>03</span><h2>質感</h2><p>找到適合自己的選擇，讓風格成為日常中自在的一部分。</p></article></div></section>{brand.consultants.length > 0 && <section className="section"><Eyebrow>THE PEOPLE BESIDE YOU</Eyebrow><h2>陪你探索的人。</h2><div className="consultant-grid">{brand.consultants.map(person => <article key={person.name}><Image src={person.photo} alt={person.name} width={400} height={500} unoptimized /><h3>{person.name}</h3><p>{person.role}</p><p>{person.bio}</p></article>)}</div></section>}<Closing /></main>; }
