@@ -1,0 +1,7 @@
+import type { Metadata } from 'next';
+import { services } from '@/content/site';
+import source from '@/content/source.json';
+import { Action, Eyebrow, FAQ } from '@/components/ui';
+import { Closing } from '@/components/sections';
+export const metadata: Metadata = { title: '服務項目' };
+export default function Services() { return <main id="main"><section className="page-hero"><Eyebrow>OUR SERVICES</Eyebrow><h1>整理形象，<br />也重新看見自己。</h1><p>從一次深入的諮詢，到持續的陪伴。<br />依你的生活與職場需要，找到適合的起點。</p></section><div className="service-jump">{services.map(s => <a href={`#${s.id}`} key={s.id}>{s.number} / {s.title} ↓</a>)}</div><div className="service-details">{services.map(service => <section id={service.id} className="service-detail" key={service.id}><div><Eyebrow>{service.number} / {service.english}</Eyebrow><h2>{service.title}</h2><p className="lead">{service.intro}</p><p>{service.description}</p><Action>討論我的需求</Action></div><div className="detail-panel"><p className="detail-for">適合這樣的你</p><p>{service.for}</p><ul>{service.details.map(detail => <li key={detail}>{detail}</li>)}</ul><dl><div><dt>時間</dt><dd>{service.duration}</dd></div><div><dt>方式</dt><dd>{service.format}</dd></div><div><dt>費用</dt><dd>諮詢時提供，預約前確認</dd></div></dl></div></section>)}</div><section className="section faq-section"><div><Eyebrow>QUESTIONS & ANSWERS</Eyebrow><h2>關於服務的疑問。</h2><p className="muted">服務不保證特定升遷或個人成果。<br />請於預約前閱讀服務規則。</p></div><FAQ items={source.faqs} /></section><Closing /></main>; }
